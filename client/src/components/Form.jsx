@@ -18,7 +18,7 @@ const Form = props => (
     />
     <div className="buttons">
       <button>Submit</button>
-      <button onClick={() => this.setState({ addEvent: !this.state.addEvent })}>
+      <button onClick={props.handleOnClick}>
         Cancel
       </button>
     </div>

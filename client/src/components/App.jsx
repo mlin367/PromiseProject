@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './Form';
+import EventList from './EventList';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -10,10 +11,27 @@ class App extends React.Component {
       eventType: '',
       eventNote: '',
       eventDate: '',
-      eventTime: ''
-    }
+      eventTime: '',
+      data: []
+    };
     this.handleOnClick = this.handleOnClick.bind(this);
     this.handleOnFormChange = this.handleOnFormChange.bind(this);
+    this.handleOnSubmit = this.handleOnSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetch();
+  }
+
+  fetch() {
+    axios.get('/api/events')
+      .then(results => {
+        console.log(results)
+        this.setState({
+          data: results.data
+        })
+      })
+      .catch(err => console.error(err));
   }
 
   handleOnClick() {
@@ -23,34 +41,53 @@ class App extends React.Component {
       eventNote: '',
       eventDate: '',
       eventTime: ''
-    })
+    });
   }
 
   handleOnSubmit() {
-    axios.post('/api/events', {
-      type: this.state.eventType,
-      date: this.state.eventDate,
-      time: this.state.eventTime,
-      note: this.state.eventNote
-    })
-    .then(result => console.log(result))
-    .catch(err => console.error(err));
+    axios
+      .post('/api/events', {
+        type: this.state.eventType,
+        date: this.state.eventDate,
+        time: this.state.eventTime,
+        note: this.state.eventNote,
+        attended: null
+      })
+      .then(result => {
+        console.log(result);
+        this.handleOnClick();
+        this.fetch();
+      })
+      .catch(err => console.error(err));
   }
 
   handleOnFormChange(e, formType) {
     this.setState({
-      [formType] : e.target.value
-    })
+      [formType]: e.target.value
+    });
   }
 
   render() {
     return (
       <div className="app">
         <h1>Timeline</h1>
-        {this.state.addEvent ? <Form handleOnFormChange={this.handleOnFormChange} /> : <button onClick={() => this.setState({addEvent: !this.state.addEvent})} className="addEvent">+ Add Event</button>}
-        
+        <EventList data={this.state.data}/>
+        {this.state.addEvent ? (
+          <Form
+            handleOnClick={this.handleOnClick}
+            handleOnFormChange={this.handleOnFormChange}
+            handleOnSubmit={this.handleOnSubmit}
+          />
+        ) : (
+          <button
+            onClick={this.handleOnClick}
+            className="addEvent"
+          >
+            + Add Event
+          </button>
+        )}
       </div>
-    )
+    );
   }
 }
 

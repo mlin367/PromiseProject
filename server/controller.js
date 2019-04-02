@@ -21,7 +21,7 @@ const timeConversion = (time) => {
 module.exports = {
   get: (req, res) => {
     data.sort((a, b) => {
-      return new Date(b.date + ' ' + timeConversion(b.date)) - new Date(a.date + ' ' + timeConversion(a.time));
+      return new Date(b.date + ' ' + timeConversion(b.time)) - new Date(a.date + ' ' + timeConversion(a.time));
     })
     res.status(200).send(data);
   },
