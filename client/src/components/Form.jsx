@@ -17,7 +17,7 @@ const Form = props => (
       placeholder="Leave a note if desired..."
     />
     <div className="buttons">
-      <button>Submit</button>
+      <button onClick={props.handleOnSubmit}>Submit</button>
       <button onClick={props.handleOnClick}>
         Cancel
       </button>

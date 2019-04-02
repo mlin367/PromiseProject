@@ -1,4 +1,5 @@
 const data = require('../data');
+const moment = require('moment');
 //Count for id of each data object
 let count = 7;
 
@@ -21,6 +22,7 @@ const timeConversion = (time) => {
 module.exports = {
   get: (req, res) => {
     data.sort((a, b) => {
+      console.log(typeof moment(b.date + ' ' + b.time, 'MM-DD-YYYY HH:mm a'))
       return new Date(b.date + ' ' + timeConversion(b.time)) - new Date(a.date + ' ' + timeConversion(a.time));
     })
     res.status(200).send(data);

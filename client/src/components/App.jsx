@@ -62,6 +62,7 @@ class App extends React.Component {
   }
 
   handleOnFormChange(e, formType) {
+    console.log(e.target.value)
     this.setState({
       [formType]: e.target.value
     });

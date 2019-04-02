@@ -1,4 +1,4 @@
-//Meant to emulate a database but all the data is stored in this file
+//Meant to emulate a database but all the data is stored in this file and data added here isn't persisted
 
 let data = [
   {
