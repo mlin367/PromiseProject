@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       addEvent: false,
-      eventType: '',
+      eventType: 'Court Date',
       eventNote: '',
       eventDate: '',
       eventTime: '',
@@ -37,7 +37,7 @@ class App extends React.Component {
   handleOnClick() {
     this.setState({
       addEvent: !this.state.addEvent,
-      eventType: '',
+      eventType: 'Court Date',
       eventNote: '',
       eventDate: '',
       eventTime: ''
@@ -62,7 +62,6 @@ class App extends React.Component {
   }
 
   handleOnFormChange(e, formType) {
-    console.log(e.target.value)
     this.setState({
       [formType]: e.target.value
     });

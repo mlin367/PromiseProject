@@ -3,32 +3,17 @@ const moment = require('moment');
 //Count for id of each data object
 let count = 7;
 
-//To convert standard time to military time
-const timeConversion = (time) => {
-  let minutes = time.split(':')[1].slice(0, 2);
-  if (time.slice(-2) === 'PM') {
-    if (time.slice(0, 2) === '12') {
-      return '12:' + minutes;
-    } else {
-      return (parseInt(time.split(':')[0], 10) + 12).toString() + ':' + minutes;
-    }
-  } else if (time.slice(0, 2) === '12') {
-    return '00:' + minutes;
-  } else {
-    return time.split(' ')[0];
-  }
-}
-
 module.exports = {
   get: (req, res) => {
     data.sort((a, b) => {
-      console.log(typeof moment(b.date + ' ' + b.time, 'MM-DD-YYYY HH:mm a'))
-      return new Date(b.date + ' ' + timeConversion(b.time)) - new Date(a.date + ' ' + timeConversion(a.time));
+      return new Date(b.date + ' ' + moment(b.time, ["h:mm A"]).format("HH:mm")) - new Date(a.date + ' ' + moment(a.time, ["h:mm A"]).format("HH:mm"));
     })
     res.status(200).send(data);
   },
 
   post: (req, res) => {
+    req.body.date = moment(req.body.date, ['YYYY-MM-DD']).format('MM/DD/YYYY');
+    req.body.time = moment(req.body.time, ['HH:mm']).format('h:mm A');
     let event = Object.assign({id: ++count}, req.body)
     data.push(event);
     res.status(201).send('Event saved successfully');
