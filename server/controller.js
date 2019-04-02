@@ -2,6 +2,7 @@ const data = require('../data');
 //Count for id of each data object
 let count = 7;
 
+//To convert standard time to military time
 const timeConversion = (time) => {
   let minutes = time.split(':')[1].slice(0, 2);
   if (time.slice(-2) === 'PM') {

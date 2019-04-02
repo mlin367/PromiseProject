@@ -6,7 +6,7 @@ let data = [
     type: 'Court Date',
     date: '04/08/19',
     time: '9:00 AM',
-    note: null,
+    note: '',
     attended: null
   },
   {
@@ -22,7 +22,7 @@ let data = [
     type: 'Case Manager Appointment',
     date: '02/27/19',
     time: '9:30 AM',
-    note: null,
+    note: '',
     attended: false
   },
   {
@@ -38,7 +38,7 @@ let data = [
     type: 'Court Date',
     date: '02/25/19',
     time: '9:00 AM',
-    note: null,
+    note: '',
     attended: true
   },
   {
@@ -46,7 +46,7 @@ let data = [
     type: 'Client Data Updated',
     date: '01/31/19',
     time: '3:24 PM',
-    note: null,
+    note: '',
     attended: null
   },
   {
@@ -54,7 +54,7 @@ let data = [
     type: 'Case Manager Appointment',
     date: '01/15/19',
     time: '2:30 PM',
-    note: null,
+    note: '',
     attended: true
   },
 ]
