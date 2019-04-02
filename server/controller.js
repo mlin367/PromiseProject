@@ -21,7 +21,6 @@ module.exports = {
   get: (req, res) => {
     data.sort((a, b) => {
       return new Date(b.date + ' ' + timeConversion(b.date)) - new Date(a.date + ' ' + timeConversion(a.time));
-      
     })
     res.status(200).send(data);
   },
@@ -32,7 +31,13 @@ module.exports = {
     res.status(201).send('Event saved successfully');
   },
 
+  //To update attended or not
   update: (req, res) => {
-
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].id === req.body.id) {
+        data[i].attended = !data.attended;
+      }
+    }
+    res.send(201).send('Event update successfully');
   }
 };
