@@ -9,9 +9,9 @@ select, input, button, textArea {
 }
 
 .type, .date, .time {
-  width: 10%;
+  width: 200px;
 }
 
 .text {
-  width: 25%;
+  width: 300px;
 }
