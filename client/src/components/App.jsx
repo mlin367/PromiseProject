@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './Form';
 import EventList from './EventList';
 import axios from 'axios';
+import '../css/App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -55,20 +56,23 @@ class App extends React.Component {
   }
 
   handleOnSubmit() {
-    axios
-      .post('/api/events', {
-        type: this.state.eventType,
-        date: this.state.eventDate,
-        time: this.state.eventTime,
-        note: this.state.eventNote,
-        attended: null
-      })
-      .then(result => {
-        console.log(result);
-        this.handleOnClick();
-        this.fetch();
-      })
-      .catch(err => console.error(err));
+    if (this.state.eventDate === '' || this.state.eventTime === '') {
+      alert('All fields except note have to be filled!');
+    } else {
+      axios
+        .post('/api/events', {
+          type: this.state.eventType,
+          date: this.state.eventDate,
+          time: this.state.eventTime,
+          note: this.state.eventNote,
+          attended: null
+        })
+        .then(result => {
+          this.handleOnClick();
+          this.fetch();
+        })
+        .catch(err => console.error(err));
+    }
   }
 
   handleOnFormChange(e, formType) {
@@ -81,6 +85,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <h1>Timeline</h1>
+        <h4>Click on the icon of past attendable events to mark attended or not</h4>
         <EventList
           handleOnIconClick={this.handleOnIconClick}
           now={this.today}

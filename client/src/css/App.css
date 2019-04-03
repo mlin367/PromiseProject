@@ -1,0 +1,9 @@
+body {
+  font-family: 'Rubik', sans-serif;
+}
+
+.addEvent {
+  font-family: inherit;
+  padding: 15px;
+  border-radius: 10%;
+}

@@ -42,7 +42,7 @@ const Event = props => {
         </i>
         <div className="eventWrapper">
           <h3 className="title">{props.event.type}</h3>
-          <div className="note">{props.event.note}</div>
+          {props.event.note === '' ? null : <div className="note">{props.event.note}</div>}
         </div>
       </div>
       <hr className="line"/>

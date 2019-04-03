@@ -1,6 +1,7 @@
 import React from 'react';
 import Event from './Event';
 import moment from 'moment';
+import '../css/EventList.css';
 
 const EventList = props => {
 
@@ -16,6 +17,11 @@ const EventList = props => {
     }
   }
 
+  let now = <div key={Math.random()} className="nowWrapper">
+    <h4>NOW</h4>
+    <div className="nowLine"></div>
+  </div>
+
   return (
   <div className="eventList">
     {dataCopy.map((obj, i) => {
@@ -24,7 +30,7 @@ const EventList = props => {
       now={props.now} 
       handleOnIconClick={props.handleOnIconClick} 
       event={obj} 
-      key={i} /> : <h3 key={i}>NOW</h3>
+      key={i} /> : now
     })}
   </div>
   )

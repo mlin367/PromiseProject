@@ -12,7 +12,7 @@ module.exports = {
   },
 
   post: (req, res) => {
-    req.body.date = moment(req.body.date, ['YYYY-MM-DD']).format('MM/DD/YYYY');
+    req.body.date = moment(req.body.date, ['YYYY-MM-DD']).format('MM/DD/YY');
     req.body.time = moment(req.body.time, ['HH:mm']).format('h:mm A');
     let event = Object.assign({id: ++count}, req.body)
     data.push(event);

@@ -10,6 +10,15 @@
   margin-right: 15px;
 }
 
+.dateTime {
+  color: gray;
+}
+
+.far {
+  cursor: pointer;
+  font-size: 23px;
+}
+
 .fa-calender {
   color: blue;
 }
@@ -32,6 +41,11 @@
 
 .fa-calender-times:before {
   content: '\f273';
+}
+
+.note {
+  background-color: #f4f4f4;
+  padding: 15px;
 }
 
 .line {

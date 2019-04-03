@@ -1,0 +1,17 @@
+.form {
+  font-family: 'Rubik', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+select, input, button, textArea {
+  font-family: inherit;
+}
+
+.type, .date, .time {
+  width: 10%;
+}
+
+.text {
+  width: 25%;
+}
