@@ -17,10 +17,12 @@ class App extends React.Component {
     this.handleOnClick = this.handleOnClick.bind(this);
     this.handleOnFormChange = this.handleOnFormChange.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
+    this.today;
   }
 
   componentDidMount() {
     this.fetch();
+    this.today = new Date();
   }
 
   fetch() {
@@ -71,7 +73,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <h1>Timeline</h1>
-        <EventList data={this.state.data}/>
+        <EventList now={this.today} data={this.state.data}/>
         {this.state.addEvent ? (
           <Form
             handleOnClick={this.handleOnClick}
