@@ -1,0 +1,39 @@
+.eventContents {
+  display: flex;
+}
+
+.title {
+  margin-top: 0px ;
+}
+
+.dateTime, i {
+  margin-right: 15px;
+}
+
+.fa-calender {
+  color: blue;
+}
+
+.fa-calender-check {
+  color: lightseagreen;
+}
+
+.fa-calender-times {
+  color: red;
+}
+
+.fa-calender:before {
+  content: '\f133';
+}
+
+.fa-calender-check:before {
+  content: '\f274';
+}
+
+.fa-calender-times:before {
+  content: '\f273';
+}
+
+.line {
+  margin: 15px 0 15px 0;
+}

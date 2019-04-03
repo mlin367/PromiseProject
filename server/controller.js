@@ -23,7 +23,7 @@ module.exports = {
   update: (req, res) => {
     for (let i = 0; i < data.length; i++) {
       if (data[i].id === req.body.id) {
-        data[i].attended = !data.attended;
+        data[i].attended = !data[i].attended;
       }
     }
     res.status(201).send('Event update successfully');
