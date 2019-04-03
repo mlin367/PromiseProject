@@ -5,6 +5,7 @@ import moment from 'moment';
 const EventList = props => {
 
   let dataCopy = props.data.slice();
+  //In order to insert today relative to the events, we use insertion sort logic
   if (props.data.length > 0) {
     dataCopy.unshift(props.now);
   
@@ -18,7 +19,12 @@ const EventList = props => {
   return (
   <div className="eventList">
     {dataCopy.map((obj, i) => {
-      return obj.date ? <Event event={obj} key={i} /> : <h3>NOW</h3>
+      return obj.date ? 
+      <Event
+      now={props.now} 
+      handleOnIconClick={props.handleOnIconClick} 
+      event={obj} 
+      key={i} /> : <h3>NOW</h3>
     })}
   </div>
   )

@@ -17,6 +17,7 @@ class App extends React.Component {
     this.handleOnClick = this.handleOnClick.bind(this);
     this.handleOnFormChange = this.handleOnFormChange.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
+    this.handleOnIconClick = this.handleOnIconClick.bind(this);
     this.today;
   }
 
@@ -26,14 +27,21 @@ class App extends React.Component {
   }
 
   fetch() {
-    axios.get('/api/events')
+    axios
+      .get('/api/events')
       .then(results => {
-        console.log(results)
+        console.log(results);
         this.setState({
           data: results.data
-        })
+        });
       })
       .catch(err => console.error(err));
+  }
+
+  handleOnIconClick(event) {
+    axios.put('/api/events', { id: event.id }).then(result => {
+      this.fetch();
+    });
   }
 
   handleOnClick() {
@@ -73,7 +81,11 @@ class App extends React.Component {
     return (
       <div className="app">
         <h1>Timeline</h1>
-        <EventList now={this.today} data={this.state.data}/>
+        <EventList
+          handleOnIconClick={this.handleOnIconClick}
+          now={this.today}
+          data={this.state.data}
+        />
         {this.state.addEvent ? (
           <Form
             handleOnClick={this.handleOnClick}
@@ -81,10 +93,7 @@ class App extends React.Component {
             handleOnSubmit={this.handleOnSubmit}
           />
         ) : (
-          <button
-            onClick={this.handleOnClick}
-            className="addEvent"
-          >
+          <button onClick={this.handleOnClick} className="addEvent">
             + Add Event
           </button>
         )}

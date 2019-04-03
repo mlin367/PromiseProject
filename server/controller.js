@@ -26,6 +26,6 @@ module.exports = {
         data[i].attended = !data.attended;
       }
     }
-    res.send(201).send('Event update successfully');
+    res.status(201).send('Event update successfully');
   }
 };
