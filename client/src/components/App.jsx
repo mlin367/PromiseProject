@@ -31,7 +31,6 @@ class App extends React.Component {
     axios
       .get('/api/events')
       .then(results => {
-        console.log(results);
         this.setState({
           data: results.data
         });

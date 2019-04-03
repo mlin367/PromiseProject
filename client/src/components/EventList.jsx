@@ -6,7 +6,7 @@ import '../css/EventList.css';
 const EventList = props => {
 
   let dataCopy = props.data.slice();
-  //In order to insert today for the NOW relative to the events, we use insertion sort logic
+  //In order to insert today for the 'NOW' relative to the date of the events, I use insertion sort logic
   if (props.data.length > 0) {
     dataCopy.unshift(props.now);
   

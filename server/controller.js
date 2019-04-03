@@ -19,7 +19,7 @@ module.exports = {
     res.status(201).send('Event saved successfully');
   },
 
-  //To update attended or not
+  //To update attended or not for past events
   update: (req, res) => {
     for (let i = 0; i < data.length; i++) {
       if (data[i].id === req.body.id) {
